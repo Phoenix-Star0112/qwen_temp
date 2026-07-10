@@ -1,73 +1,35 @@
-```
 # Flutter/Dart
 .dart_tool/
+.build/
+.flutter-plugins
+.flutter-plugin-dependencies
 .packages
-.pub/
-build/
-**/ios/.generated/
-**/android/.generated/
+pubspec.lock
 
-# Environment
-.env
-.env.local
-*.env.*
+# Build artifacts
+/build/
+/dist/
 
 # Dependencies
+vendor/
 node_modules/
-**/node_modules/
 
 # Logs
 *.log
-**/*.log
+**/logs
 
-# Coverage
-coverage/
-**/coverage/
+# Environment variables
+.env
+.env.local
+.env.*
+!.env.example
 
-# VS Code
+# IDE specific
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# macOS
+# OS generated files
 .DS_Store
-
-# Temporary files
-*.tmp
-*.temp
-**/tmp/
-**/temp/
-
-# Compiled files
-*.pyc
-*.class
-*.o
-*.exe
-*.dll
-*.so
-*.a
-*.obj
-*.out
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-.venv/
-pyvenv.cfg
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.db
-*.sqlite
-.hypothesis/
-.pytest_cache/
-.mypy_cache/
-```
+Thumbs.db

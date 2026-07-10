@@ -95,7 +95,7 @@ class MainMenuScreen extends StatelessWidget {
               
               _buildMenuButton(
                 context,
-                icon: Icons.emoji_events,
+                icon: Icons.trophy_rounded,
                 label: 'RANKINGS',
                 onPressed: () {},
                 primaryColor: const Color(0xFFFF6B6B),
