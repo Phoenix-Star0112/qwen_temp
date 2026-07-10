@@ -12,6 +12,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
   late ScoreManager scoreManager;
   late double currentTime;
   bool isPlaying = false;
+  double _currentTime = 0.0;
   
   // Visual components
   late List<LaneComponent> lanes;
@@ -64,7 +65,6 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     chart = gameChart;
     scoreManager = manager;
     scoreManager.reset();
-    currentTime = 0.0;
     activeNotes.clear();
     hitEffects.clear();
   }
@@ -72,7 +72,6 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
   /// Start the game
   void startGame() {
     isPlaying = true;
-    currentTime = 0.0;
   }
   
   /// Pause the game
@@ -92,7 +91,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     if (!isPlaying) return;
     
     // Update current time
-    currentTime += dt;
+    _currentTime += dt;
     
     // Spawn notes that should appear
     _spawnNotes();
@@ -107,7 +106,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     _updateHitEffects(dt);
     
     // Check if song is complete
-    if (currentTime > chart.duration + 2.0) {
+    if (_currentTime > chart.duration + 2.0) {
       _endGame();
     }
   }
@@ -120,7 +119,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
       if (!note.isActive) continue;
       
       // Check if note should be spawned
-      if (note.time - currentTime <= spawnThreshold && 
+      if (note.time - _currentTime <= spawnThreshold && 
           !activeNotes.any((n) => n.note == note)) {
         final noteComponent = NoteComponent(
           note: note,
@@ -137,7 +136,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
   /// Update all active notes
   void _updateNotes(double dt) {
     for (final noteComponent in activeNotes.toList()) {
-      noteComponent.updatePosition(currentTime);
+      noteComponent.updatePosition(_currentTime);
       
       // Remove notes that are off-screen
       if (noteComponent.shouldRemove()) {
@@ -154,7 +153,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     for (final note in chart.notes) {
       if (!note.isActive) continue;
       
-      if (currentTime - note.time > missThreshold) {
+      if (_currentTime - note.time > missThreshold) {
         note.markMissed();
         scoreManager.registerHit(HitResult.miss);
         
@@ -211,7 +210,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     for (final note in chart.notes) {
       if (!note.isActive || note.lane != lane) continue;
       
-      final diff = (note.time - currentTime).abs();
+      final diff = (note.time - _currentTime).abs();
       if (diff < hitWindow && diff < closestDiff) {
         closestDiff = diff;
         closestNote = note;
