@@ -4,6 +4,7 @@ import 'screens/game_screen.dart';
 import 'screens/main_menu_screen.dart';
 import 'utils/game_constants.dart';
 import 'utils/game_settings.dart';
+import 'models/score_manager.dart';
 
 void main() {
   runApp(const RhythmGameApp());
