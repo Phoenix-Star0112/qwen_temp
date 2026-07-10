@@ -1,16 +1,22 @@
-```
-# Dependencies
+# Flutter/Dart
 .dart_tool/
 .build/
-.pub/
+.flutter-plugins
+.flutter-plugin-dependencies
+.packages
+pubspec.lock
+
+# Build artifacts
+/build/
+/dist/
+
+# Dependencies
+vendor/
+node_modules/
 
 # Logs
 *.log
 **/logs
-
-# OS generated files
-.DS_Store
-Thumbs.db
 
 # Environment variables
 .env
@@ -19,25 +25,11 @@ Thumbs.db
 !.env.example
 
 # IDE specific
-.idea/
 .vscode/
+.idea/
 *.swp
 *.swo
 
-# Build outputs
-bin/
-build/
-dist/
-out/
-target/
-
-# Coverage
-coverage/
-*.lcov
-*.profdata
-
-# Temporary files
-*.tmp
-*.temp
+# OS generated files
 .DS_Store
-```
+Thumbs.db

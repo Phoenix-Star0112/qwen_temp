@@ -120,7 +120,7 @@ class _GameScreenState extends State<GameScreen> {
               
               // Accuracy
               _buildHUDItem(
-                icon: Icons.percent,
+                icon: Icons.target_rounded,
                 label: 'ACCURACY',
                 value: '${score.accuracy.toStringAsFixed(2)}%',
                 color: const Color(0xFFFFFF00),
