@@ -13,6 +13,9 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
   bool isPlaying = false;
   double _currentTime = 0.0;
   
+  @override
+  double currentTime() => _currentTime;
+  
   // Visual components
   late List<LaneComponent> lanes;
   late HitLineComponent hitLine;
@@ -67,8 +70,6 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     activeNotes.clear();
     hitEffects.clear();
   }
-  
-  double get currentTime => _currentTime;
   
   /// Start the game
   void startGame() {
