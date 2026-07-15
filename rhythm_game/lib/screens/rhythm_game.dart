@@ -10,6 +10,7 @@ import '../utils/game_constants.dart';
 class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
   late Chart chart;
   late ScoreManager scoreManager;
+  late double currentTime;
   bool isPlaying = false;
   double _currentTime = 0.0;
   
@@ -195,7 +196,7 @@ class RhythmGame extends FlameGame with TapCallbacks, DragCallbacks {
     
     if (!isPlaying) return;
     
-    final tapX = event.localPosition.x;
+    final tapX = event.eventPosition.x;
     final lane = (tapX / laneWidth).floor().clamp(0, laneCount - 1);
     
     _checkHit(lane);
